@@ -40,7 +40,7 @@
 			</el-col>
 			<el-col :xs="12" :md="8" :xl="4">
 				<el-card shadow="never">
-					<div class="stat-label">打赏流动</div>
+					<div class="stat-label">赞赏流动</div>
 					<div class="stat-value">{{ fmt(tipFlow.totalIn) }}</div>
 					<div class="stat-sub">流入 {{ fmt(tipFlow.totalIn) }} / 流出 {{ fmt(tipFlow.totalOut) }}（零和）</div>
 				</el-card>
@@ -53,7 +53,7 @@
 				<el-card shadow="never">
 					<template #header>
 						<span>🏪 各出口消费占比</span>
-						<span class="chart-sub">shop/makeup/rename/quota，不含打赏悬赏流转</span>
+						<span class="chart-sub">shop/makeup/rename/quota，不含赞赏悬赏流转</span>
 					</template>
 					<v-chart :option="byTypeOption" autoresize style="height: 320px" />
 				</el-card>
@@ -71,7 +71,7 @@
 
 		<el-card v-if="overview" class="mt-3" shadow="never">
 			<div class="overview-tips">
-				<p>📌 口径说明（积分消费体系 2.7）：<code>transfer</code>（后台人工调账）排除在发行/回收之外；打赏/悬赏为<b>零和流转</b>（一进一出抵消），单独统计流动规模，不进回收率。</p>
+				<p>📌 口径说明（积分消费体系 2.7）：<code>transfer</code>（后台人工调账）排除在发行/回收之外；赞赏/悬赏为<b>零和流转</b>（一进一出抵消），单独统计流动规模，不进回收率。</p>
 				<p>💰 悬赏金额总额 {{ fmt(bountyFlow.totalAmount) }}，累计手续费 {{ fmt(bountyFlow.feeTotal) }}（settled 行 amount − payout = fee）。</p>
 			</div>
 		</el-card>

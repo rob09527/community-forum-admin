@@ -648,7 +648,7 @@ declare namespace Eps {
 		payout?: number;
 
 		/**
-		 * 手续费（销毁，计入悬赏账目）；退款不抽水，故退款时为 null
+		 * 手续费（销毁，计入悬赏账目）；退款不扣手续费，故退款时为 null
 		 */
 		fee?: number;
 
@@ -1062,12 +1062,12 @@ declare namespace Eps {
 
 	interface ForumTipEntity {
 		/**
-		 * 打赏记录 ID
+		 * 赞赏记录 ID
 		 */
 		id?: number;
 
 		/**
-		 * 打赏者 ID
+		 * 赞赏者 ID
 		 */
 		fromUserId?: number;
 
@@ -1077,7 +1077,7 @@ declare namespace Eps {
 		toUserId?: number;
 
 		/**
-		 * 打赏目标类型：post | comment
+		 * 赞赏目标类型：post | comment
 		 */
 		targetType?: string;
 
@@ -1087,17 +1087,17 @@ declare namespace Eps {
 		targetId?: number;
 
 		/**
-		 * 打赏金额（鸡腿）；不抽水，全额到账 [R47]
+		 * 赞赏金额（鸡腿）；不扣手续费，全额到账 [R47]
 		 */
 		amount?: number;
 
 		/**
-		 * 打赏留言，最长 20 字，选填 [1.5.3]
+		 * 赞赏留言，最长 20 字，选填 [1.5.3]
 		 */
 		message?: string;
 
 		/**
-		 * 打赏时间
+		 * 赞赏时间
 		 */
 		createdAt?: timestamp;
 
@@ -2791,7 +2791,7 @@ declare namespace Eps {
 		saveLimits(data?: any): Promise<any>;
 
 		/**
-		 * 读取全部配置（签到/等级/商城/打赏/悬赏/道具/限流）
+		 * 读取全部配置（签到/等级/商城/赞赏/悬赏/道具/限流）
 		 */
 		getConfig(data?: any): Promise<any>;
 
@@ -2806,7 +2806,7 @@ declare namespace Eps {
 		saveShop(data?: any): Promise<any>;
 
 		/**
-		 * 保存打赏配置
+		 * 保存赞赏配置
 		 */
 		saveTip(data?: any): Promise<any>;
 
@@ -3075,17 +3075,17 @@ declare namespace Eps {
 
 	interface ForumTip {
 		/**
-		 * 打赏按接收方聚合
+		 * 赞赏按接收方聚合
 		 */
 		aggregateByReceiver(data?: any): Promise<any>;
 
 		/**
-		 * 打赏按发送方聚合
+		 * 赞赏按发送方聚合
 		 */
 		aggregateBySender(data?: any): Promise<any>;
 
 		/**
-		 * 打赏同方同收对预警
+		 * 赞赏同方同收对预警
 		 */
 		aggregateByPair(data?: any): Promise<any>;
 

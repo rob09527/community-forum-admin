@@ -10,7 +10,7 @@ import { ForumUserEntity } from '../entity/user';
  *
  * 口径红线（设计文档 4.7）：
  * - `transfer` 是后台人工调账，一律排除在发行/回收之外；
- * - 打赏 / 悬赏是**零和流转**（tip_in 伴随 tip_out、bounty_in 伴随 bounty_out/refund），
+ * - 赞赏 / 悬赏是**零和流转**（tip_in 伴随 tip_out、bounty_in 伴随 bounty_out/refund），
  *   把它们混进「发行 vs 回收」会把同一笔积分两头都算进回收，必须单列；
  * - 发行 = 收入侧（checkin/post/comment/liked 的 delta>0）；
  * - 回收 = 真实消费（shop/makeup/rename/quota 的 delta<0）。
@@ -73,7 +73,7 @@ export class ForumDashboardService extends BaseService {
     };
   }
 
-  /** 各出口消费占比（真实消费按 type 分组，不含打赏/悬赏流转） */
+  /** 各出口消费占比（真实消费按 type 分组，不含赞赏/悬赏流转） */
   private async queryByType() {
     const rows: { type: string; amount: string; count: string }[] = await this.pointLogEntity.query(
       `SELECT type, SUM(-delta) AS amount, COUNT(*) AS count
@@ -92,7 +92,7 @@ export class ForumDashboardService extends BaseService {
     }));
   }
 
-  /** 打赏流转（零和：总进 = 总出，单独展示流动规模，不进回收率） */
+  /** 赞赏流转（零和：总进 = 总出，单独展示流动规模，不进回收率） */
   private async queryTipFlow() {
     const [row] = await this.pointLogEntity.query(
       `SELECT

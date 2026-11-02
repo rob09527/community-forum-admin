@@ -315,7 +315,7 @@
             "childMenus": []
           },
           {
-            "name": "保存打赏配置",
+            "name": "保存赞赏配置",
             "router": null,
             "perms": "forum:config:saveTip",
             "type": 2,
@@ -550,7 +550,7 @@
         ]
       },
       {
-        "name": "打赏记录",
+        "name": "赞赏记录",
         "router": "/forum/tip",
         "perms": null,
         "type": 1,
@@ -561,7 +561,7 @@
         "isShow": true,
         "childMenus": [
           {
-            "name": "查看打赏记录",
+            "name": "查看赞赏记录",
             "router": null,
             "perms": "forum:tip:page",
             "type": 2,

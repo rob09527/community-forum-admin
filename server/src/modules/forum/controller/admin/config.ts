@@ -12,11 +12,11 @@ import { ForumGameConfigService } from '../../service/config';
 @Provide()
 @CoolController({
   serviceApis: [
-    { method: 'getConfig', summary: '读取全部配置（签到/等级/商城/打赏/悬赏/道具/限流）' },
+    { method: 'getConfig', summary: '读取全部配置（签到/等级/商城/赞赏/悬赏/道具/限流）' },
     { method: 'saveCheckin', summary: '保存签到奖励配置' },
     { method: 'saveLevels', summary: '保存等级配置' },
     { method: 'saveShop', summary: '保存商城配置' },
-    { method: 'saveTip', summary: '保存打赏配置' },
+    { method: 'saveTip', summary: '保存赞赏配置' },
     { method: 'saveBounty', summary: '保存悬赏配置' },
     { method: 'saveProps', summary: '保存功能道具配置' },
     { method: 'saveLimits', summary: '保存频率/体积限制配置' },

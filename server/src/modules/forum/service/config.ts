@@ -62,7 +62,7 @@ export class ForumGameConfigService {
     await this.call('put', '/api/admin/config/shop', cfg);
   }
 
-  /** 保存打赏配置（档位 / 自定义上下限 / 热度权重等） */
+  /** 保存赞赏配置（档位 / 自定义上下限 / 热度权重等） */
   async saveTip(cfg: any): Promise<void> {
     await this.call('put', '/api/admin/config/tip', cfg);
   }

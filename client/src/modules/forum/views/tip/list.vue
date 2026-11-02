@@ -6,7 +6,7 @@
 				<cl-refresh-btn />
 				<cl-flex1 />
 				<!-- 搜索：目标类型 / 时间范围 / 金额区间 / 用户关键字 -->
-				<cl-search-key :placeholder="t('搜索打赏者 / 接收者')" />
+				<cl-search-key :placeholder="t('搜索赞赏者 / 接收者')" />
 				<cl-search ref="Search" />
 			</cl-row>
 
@@ -25,7 +25,7 @@
 			<template #header>
 				<div class="flex items-center justify-between">
 					<span>📊 流动聚合分析</span>
-					<span class="agg-tip">打赏为零和流转：只统计流动方向，不进「发行 vs 回收」口径</span>
+					<span class="agg-tip">赞赏为零和流转：只统计流动方向，不进「发行 vs 回收」口径</span>
 				</div>
 			</template>
 
@@ -33,7 +33,7 @@
 				<!-- 按发送方聚合 -->
 				<el-tab-pane :label="t('按发送方')" name="sender">
 					<div class="agg-toolbar">
-						<span class="agg-desc">同一人向多少人打赏 / 多少笔 / 总额 —— 排查小号搬运</span>
+						<span class="agg-desc">同一人向多少人赞赏 / 多少笔 / 总额 —— 排查小号搬运</span>
 						<el-input-number v-model="aggMinTotal" :min="1" :step="10" size="small" />
 						<span class="agg-unit">累计 ≥ 该值才展示</span>
 						<el-button size="small" type="primary" :loading="aggLoading" @click="loadAgg">查询</el-button>
@@ -41,7 +41,7 @@
 					<el-table :data="senderItems" border size="small" max-height="420">
 						<el-table-column label="发送方" prop="username" min-width="140" />
 						<el-table-column label="接收人数" prop="receiverCount" width="100" />
-						<el-table-column label="打赏笔数" prop="tipCount" width="100" />
+						<el-table-column label="赞赏笔数" prop="tipCount" width="100" />
 						<el-table-column label="累计总额" prop="totalAmount" width="120" />
 					</el-table>
 				</el-tab-pane>
@@ -49,15 +49,15 @@
 				<!-- 按接收方聚合 -->
 				<el-tab-pane :label="t('按接收方')" name="receiver">
 					<div class="agg-toolbar">
-						<span class="agg-desc">同一人收到多少打赏 / 多少笔 / 总额 —— 排查异常流入</span>
+						<span class="agg-desc">同一人收到多少赞赏 / 多少笔 / 总额 —— 排查异常流入</span>
 						<el-input-number v-model="aggMinTotal" :min="1" :step="10" size="small" />
 						<span class="agg-unit">累计 ≥ 该值才展示</span>
 						<el-button size="small" type="primary" :loading="aggLoading" @click="loadAgg">查询</el-button>
 					</div>
 					<el-table :data="receiverItems" border size="small" max-height="420">
 						<el-table-column label="接收方" prop="username" minWidth="140" />
-						<el-table-column label="打赏人数" prop="senderCount" width="100" />
-						<el-table-column label="打赏笔数" prop="tipCount" width="100" />
+						<el-table-column label="赞赏人数" prop="senderCount" width="100" />
+						<el-table-column label="赞赏笔数" prop="tipCount" width="100" />
 						<el-table-column label="累计总额" prop="totalAmount" width="120" />
 					</el-table>
 				</el-tab-pane>
@@ -73,7 +73,7 @@
 					<el-table :data="pairItems" border size="small" max-height="420">
 						<el-table-column label="发送方" prop="fromUserName" minWidth="140" />
 						<el-table-column label="接收方" prop="toUserName" minWidth="140" />
-						<el-table-column label="打赏笔数" prop="tipCount" width="100" />
+						<el-table-column label="赞赏笔数" prop="tipCount" width="100" />
 						<el-table-column label="累计总额" prop="totalAmount" width="120" />
 					</el-table>
 				</el-tab-pane>
@@ -113,7 +113,7 @@ const Table = useTable({
 			width: 70
 		},
 		{
-			label: t('打赏者'),
+			label: t('赞赏者'),
 			prop: 'fromUserName',
 			minWidth: 130
 		},
@@ -229,7 +229,7 @@ async function loadAgg() {
 		pairItems.value = pair?.items || [];
 		// 同方同收对出现即提示关注（预警语义）
 		if (pairItems.value.length) {
-			ElMessage.warning(t('检测到 {n} 组「同方同收对」累计打赏超过阈值，建议关注异常流动', { n: pairItems.value.length }));
+			ElMessage.warning(t('检测到 {n} 组「同方同收对」累计赞赏超过阈值，建议关注异常流动', { n: pairItems.value.length }));
 		}
 	} catch (err) {
 		console.error('[tip] 聚合查询失败:', err);

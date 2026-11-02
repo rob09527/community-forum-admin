@@ -39,7 +39,7 @@ export class ForumBountyEntity extends CoolBaseEntity {
   @Column({ type: 'int', comment: '实发金额 = amount − fee；退款时为 null', nullable: true })
   payout: number | null;
 
-  @Column({ type: 'int', comment: '手续费（销毁，计入悬赏账目）；退款不抽水，故退款时为 null', nullable: true })
+  @Column({ type: 'int', comment: '手续费（销毁，计入悬赏账目）；退款不扣手续费，故退款时为 null', nullable: true })
   fee: number | null;
 
   @Column({ type: 'text', comment: '结算方式：accept(人工采纳) | auto(超时自动判给最高赞) | cancel(发起人取消) | admin(后台人工退款)', nullable: true })

@@ -47,7 +47,7 @@ export class ForumBountyService extends BaseService {
   /**
    * 人工退款（处置异常悬赏：发起人误操作、内容违规下架等）。
    * forum 侧 forceRefund=true，不判定「是否有有效回答」，托管中即可退；
-   * 退款不抽水，operator 写入 Bounty.operator 审计追责 [2.4]。
+   * 退款不扣手续费，operator 写入 Bounty.operator 审计追责 [2.4]。
    */
   async refund(id: number, operator?: string) {
     return this.call(`/api/admin/bounties/${id}/refund`, operator ? { operator } : {});

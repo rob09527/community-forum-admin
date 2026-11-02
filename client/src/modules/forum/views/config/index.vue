@@ -115,16 +115,16 @@
 			</el-form>
 		</el-card>
 
-		<!-- 打赏配置 -->
+		<!-- 赞赏配置 -->
 		<el-card v-permission="service.forum.config.permission.saveTip" class="mt-3" shadow="never">
 			<template #header>
 				<div class="flex items-center justify-between">
-					<span>🧧 打赏配置</span>
+					<span>🧧 赞赏配置</span>
 					<div>
 						<el-button size="small" v-permission="service.forum.config.permission.reset" @click="resetGroup('tip')">
 							恢复默认
 						</el-button>
-						<el-button type="primary" size="small" :loading="savingTip" @click="saveTip">保存打赏配置</el-button>
+						<el-button type="primary" size="small" :loading="savingTip" @click="saveTip">保存赞赏配置</el-button>
 					</div>
 				</div>
 			</template>
@@ -142,7 +142,7 @@
 								placeholder="输入金额回车添加"
 								style="width: 100%"
 							/>
-							<div class="form-tip">可选打赏档位（整数鸡腿），如 6 / 66 / 188</div>
+							<div class="form-tip">可选赞赏档位（整数鸡腿），如 6 / 66 / 188</div>
 						</el-form-item>
 					</el-col>
 					<el-col :xs="24" :md="12">
@@ -156,7 +156,7 @@
 						</el-form-item>
 					</el-col>
 					<el-col :xs="24" :md="12">
-						<el-form-item label="单用户日打赏上限">
+						<el-form-item label="单用户日赞赏上限">
 							<el-input-number v-model="tip.dailyLimitPerUser" :min="1" :step="1" :disabled="!tip.dailyLimitPerUser" />
 							<el-checkbox v-model="tip._noLimit" class="ml-1">不限制</el-checkbox>
 							<div class="form-tip">为空 = 不限制</div>
@@ -165,13 +165,13 @@
 					<el-col :xs="24" :md="12">
 						<el-form-item label="热度加成基数">
 							<el-input-number v-model="tip.heatBase" :min="0" :step="100" />
-							<div class="form-tip">打赏对帖子的热度贡献基数</div>
+							<div class="form-tip">赞赏对帖子的热度贡献基数</div>
 						</el-form-item>
 					</el-col>
 					<el-col :xs="24" :md="12">
 						<el-form-item label="热度加成上限">
 							<el-input-number v-model="tip.heatCap" :min="0" :step="100" />
-							<div class="form-tip">打赏热度贡献封顶</div>
+							<div class="form-tip">赞赏热度贡献封顶</div>
 						</el-form-item>
 					</el-col>
 				</el-row>
@@ -355,7 +355,7 @@ const DEFAULT_LEVELS = LEVEL_POOL.slice(-3);
 /** 默认商城配置（与 forum server 的 DEFAULT_SHOP_CONFIG 一致） */
 const DEFAULT_SHOP = { defaultDurationDays: 30, remindDays: 3 };
 
-/** 默认打赏配置（与 forum server 的 DEFAULT_TIP_CONFIG 一致） */
+/** 默认赞赏配置（与 forum server 的 DEFAULT_TIP_CONFIG 一致） */
 const DEFAULT_TIP = {
 	amounts: [6, 66, 188],
 	customMin: 1,
@@ -535,7 +535,7 @@ async function saveTip() {
 	savingTip.value = true;
 	try {
 		await service.forum.config.saveTip(payload);
-		ElMessage.success('打赏配置已保存');
+		ElMessage.success('赞赏配置已保存');
 	} catch (err: any) {
 		showError(err, '保存失败');
 	} finally {
@@ -596,7 +596,7 @@ async function saveProps() {
 
 // 恢复默认：删除 Redis key，forum 侧自动回退代码内置默认值
 async function resetGroup(group: 'shop' | 'tip' | 'bounty' | 'props' | 'limits') {
-	await ElMessageBox.confirm(`确定将${group === 'shop' ? '商城' : group === 'tip' ? '打赏' : group === 'bounty' ? '悬赏' : group === 'limits' ? '限制' : '道具'}配置恢复为默认值？`, '恢复默认', {
+	await ElMessageBox.confirm(`确定将${group === 'shop' ? '商城' : group === 'tip' ? '赞赏' : group === 'bounty' ? '悬赏' : group === 'limits' ? '限制' : '道具'}配置恢复为默认值？`, '恢复默认', {
 		type: 'warning',
 		confirmButtonText: '恢复',
 		cancelButtonText: '取消'
